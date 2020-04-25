@@ -8,15 +8,13 @@ export class SparqlQueryEngineService {
 
   constructor(private http: HttpClient) { }
 
-  private url = 'http://linkedgeodata/sparql';
+  private url = 'http://linkedgeodata.org/sparql';
 
   sparkql(latitude, longitude) {
-    const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded',
-      'Accept': 'application/json'
-    });
+    const headers = new HttpHeaders();
+    headers.append('Content-type', 'application/x-www-form-urlencoded')
+    headers.append( 'Accept', 'application/json');
 
-    const params = new HttpParams();
     const query = 'Prefix lgdo: <http://linkedgeodata.org/ontology/>\n' +
       'Prefix geom: <http://geovocab.org/geometry#>\n' +
       'Prefix ogc:<http://www.opengis.net/ont/geosparql#>\n' +
@@ -29,19 +27,14 @@ export class SparqlQueryEngineService {
       '      ogc:asWKT ?g\n' +
       '    ] .\n' +
       '\n' +
-      '    Filter(bif:st_intersects (?g, bif:st_point (' + 44.13600 + ',' + 12.24628 + '), 0.1)) .\n' +
-      '}'
-    params.append('query', query);
-    params.append('format', 'json');
+      '    Filter(bif:st_intersects (?g, bif:st_point (' + 12.24628 + ',' + 44.13600 + '), 0.1)) .\n' +
+      '}';
 
-    const options = {
-      'headers': headers,
-      'params': params
-    };
+    const params = new HttpParams().append('query', query).append('format', 'json');
 
-    console.log("prova");
+    console.log('prova');
 
-    this.http.get(this.url, options) // 1
+    this.http.get(this.url, {headers: headers, params: params}) // 1
       .subscribe(data => {
         console.log(data);
       });

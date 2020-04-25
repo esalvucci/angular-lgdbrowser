@@ -5,6 +5,7 @@ import {fromEvent} from 'rxjs';
 import {
   debounceTime,
   map} from 'rxjs/operators';
+import {SparqlQueryEngineService} from '../services/sparql-query-engine.service';
 
 @Component({
   selector: 'app-geocoding',
@@ -17,14 +18,18 @@ export class GeocodingComponent implements AfterViewInit {
   @Output() onSearch = new EventEmitter();
   searchResults: NominatimResponse[];
 
-  constructor(private nominatimService: NominatimService) {
+  constructor(private nominatimService: NominatimService, private sparqlQueryEngineService: SparqlQueryEngineService) {
   }
 
   ngAfterViewInit() {
     fromEvent(this.search.nativeElement, 'keyup').
       pipe(
         map((event: any) => event.target.value),
-        debounceTime(1200)).subscribe((address: string) => /* this.addressLookup(address)*/ console.log(address));
+        debounceTime(1200)).subscribe((address: string) => {
+          this.sparqlQueryEngineService.sparkql(0, 0)
+      /* this.addressLookup(address)*/
+          console.log(address);
+    });
   }
 
   addressLookup(address: string) {
