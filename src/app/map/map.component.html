@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mt-3">
       <div class="col"></div>
-      <div class="col-6">
+      <div class="col-8">
         <nav class="w-100 leaflet-top leaflet-left">
         <app-geocoding (onSearch)="refreshSearchList($event)"></app-geocoding>
         </nav>
@@ -18,6 +18,6 @@
   </div>
 <div id="details-panel">
   <app-results-list [results]="results" (locationSelected)="getAddress($event)"></app-results-list>
-  <app-map-point-form [mapPoint]="mapPoint"></app-map-point-form>
+<!--  <app-map-point-form [mapPoint]="mapPoint"></app-map-point-form> -->
 </div>
 

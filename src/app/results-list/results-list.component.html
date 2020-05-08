@@ -1,10 +1,21 @@
-<div id="results-list">
 
-  <div id="results">
-    <ul>
-      <li *ngFor="let result of results" (click)="selectResult(result)">
-        {{ result.displayName }}
-      </li>
-    </ul>
+<div class="row mt-4" >
+  <div class="col"></div>
+  <div class="col-6">
+  <div class="card" id="results-list">
+    <div class="card-header">
+      Via/P.zza/Città
+    </div>
+    <div class="card-body" id="results">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let result of results" (click)="selectResult(result)">
+          {{ result.displayName }}
+        </li>
+      </ul>
+    </div>
+    </div>
   </div>
+
+  <div class="col"></div>
+
 </div>

@@ -25,9 +25,8 @@ export class GeocodingComponent implements AfterViewInit {
     fromEvent(this.search.nativeElement, 'keyup').
       pipe(
         map((event: any) => event.target.value),
-        debounceTime(1200)).subscribe((address: string) => {
-          this.sparqlQueryEngineService.sparkql(0, 0)
-      /* this.addressLookup(address)*/
+        debounceTime(500)).subscribe((address: string) => {
+          this.addressLookup(address)
           console.log(address);
     });
   }

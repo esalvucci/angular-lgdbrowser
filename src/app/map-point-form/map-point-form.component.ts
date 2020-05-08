@@ -10,7 +10,7 @@ export class MapPointFormComponent {
   @Input()
   mapPoint: MapPoint;
 
-  constructor () {
+  constructor() {
   }
 
 }
