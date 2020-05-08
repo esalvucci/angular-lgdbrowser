@@ -3,10 +3,10 @@ import {MapPoint} from '../shared/models/map-point.model';
 
 @Component({
   selector: 'app-map-point-form',
-  templateUrl: './map-point-form.component.html',
-  styleUrls: ['./map-point-form.component.scss']
+  templateUrl: './results.component.html',
+  styleUrls: ['./results.component.scss']
 })
-export class MapPointFormComponent {
+export class ResultsComponent {
   @Input()
   mapPoint: MapPoint;
 

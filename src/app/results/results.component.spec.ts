@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {MapPointFormComponent} from './map-point-form.component';
+import {ResultsComponent} from './results.component';
 
 describe('MapPointFormComponent', () => {
-  let component: MapPointFormComponent;
-  let fixture: ComponentFixture<MapPointFormComponent>;
+  let component: ResultsComponent;
+  let fixture: ComponentFixture<ResultsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MapPointFormComponent]
+      declarations: [ResultsComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MapPointFormComponent);
+    fixture = TestBed.createComponent(ResultsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

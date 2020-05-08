@@ -1,0 +1,34 @@
+<div class="card" >
+  <div class="card-header">
+    Filters
+  </div>
+  <div class="card-body" id="filters">
+    <select class="custom-select" [ngModel]="filter.poiType">
+      <option selected disabled>POI Type</option>
+      <option value="HistoricThing">Historic Thing</option>
+      <option value="Cinema">Cinema</option>
+      <option value="Restaurant">Restaurant</option>
+      <option value="Amenity">Amenity (still not working)</option>
+      <option value="NaturalThing">Natural Thing (still not working)</option>
+      <option value="Place">Place (still not working)</option>
+    </select>
+
+    <div class="input-group mb-3 mt-3">
+      <input type="number" [ngModel]="filter.distance" [min]="0" [max]="10.0" [step]="0.1" class="form-control" aria-label="Distance">
+      <div class="input-group-append">
+        <span class="input-group-text">km</span>
+      </div>
+
+      <select class="custom-select ml-3" [ngModel]="filter.language">
+        <option selected disabled>Language</option>
+        <option value="en">English</option>
+        <option value="it">Italian</option>
+        <option value="fr">French</option>
+        <option value="jp">Japanese</option>
+      </select>
+
+    </div>
+
+  </div>
+
+</div>

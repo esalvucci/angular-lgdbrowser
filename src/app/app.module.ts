@@ -9,16 +9,18 @@ import {NominatimService} from './services/nominatim-service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {MapComponent} from './map/map.component';
-import {MapPointFormComponent} from './map-point-form/map-point-form.component';
+import {ResultsComponent} from './results/results.component';
 import {ResultsListComponent} from './results-list/results-list.component';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GeocodingComponent,
     MapComponent,
-    MapPointFormComponent,
-    ResultsListComponent
+    ResultsComponent,
+    ResultsListComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
