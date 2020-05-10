@@ -49,7 +49,7 @@ export class FiltersComponent implements OnInit {
   }
 
   private searchCinema() {
-
+    this.resultService.executeCinemaQuery(this.mapPoint);
   }
 
   private searchRestaurant() {

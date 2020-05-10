@@ -1,0 +1,24 @@
+<div class="card-group">
+  <div class="col-4" *ngFor="let cinema of cinemas">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{cinema.label.value}}</h5>
+        <p class="card-text" *ngIf="isDefined(cinema.hasWeelchair)">{{cinema.hasWeelchair.value}}</p>
+        <p class="card-text" *ngIf="isDefined(cinema.street) &&
+                                    isDefined(cinema.houseNumber)">
+          {{cinema.street.value}} {{cinema.houseNumber.value}}
+        </p>
+
+        <p class="card-text" *ngIf="isDefined(cinema.city) && isDefined(cinema.country)">
+          {{cinema.city.value}} {{cinema.country.value}}
+        </p>
+
+        <p class="card-text" *ngIf="isDefined(cinema.phone)">{{cinema.phone}}</p>
+
+        <a href="{{cinema.homepage.value}}" *ngIf="isDefined(cinema.homepage)" class="btn btn-primary">
+          Website
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

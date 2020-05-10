@@ -14,6 +14,7 @@ import {ResultsListComponent} from './results-list/results-list.component';
 import { FiltersComponent } from './filters/filters.component';
 import { HistoricThingResultComponent } from './historic-thing-result/historic-thing-result.component';
 import { RestaurantResultComponent } from './restaurant-result/restaurant-result.component';
+import { CinemaResultComponent } from './cinema-result/cinema-result.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RestaurantResultComponent } from './restaurant-result/restaurant-result
     ResultsListComponent,
     FiltersComponent,
     HistoricThingResultComponent,
-    RestaurantResultComponent
+    RestaurantResultComponent,
+    CinemaResultComponent
   ],
   imports: [
     BrowserModule,

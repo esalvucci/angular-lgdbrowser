@@ -1,12 +1,11 @@
 import {Injectable, Input} from '@angular/core';
 import {AbstractQuery} from '../shared/models/AbstractQuery';
 import {HistoricThingQuery} from '../shared/models/HistoricThingQuery';
+import {CinemaQuery} from '../shared/models/CinemaQuery';
 import {FilterService} from './filter.service';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
-import {LatLng, Point} from 'leaflet';
 import {MapPoint} from '../shared/models/map-point.model';
-import {NominatimResponse} from '../shared/models/nominatim-response.model';
 import {RestaurantQuery} from '../shared/models/RestaurantQuery';
 
 @Injectable({
@@ -39,4 +38,10 @@ export class ResultService {
 
   }
 
+  executeCinemaQuery(point: MapPoint) {
+    this.query = new CinemaQuery(this.http, this.filterService, point);
+    return this.query.executeQuery().subscribe(data => {
+      this.filterSource.next(data);
+    });
+  }
 }
