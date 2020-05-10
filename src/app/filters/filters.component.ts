@@ -53,6 +53,6 @@ export class FiltersComponent implements OnInit {
   }
 
   private searchRestaurant() {
-
+    this.resultService.executeRestaurantQuery(this.mapPoint);
   }
 }

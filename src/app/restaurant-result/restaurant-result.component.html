@@ -1,0 +1,41 @@
+<div class="card-group">
+  <div class="col-4" *ngFor="let restaurant of restaurants">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{restaurant.label.value}}</h5>
+      <p class="card-text" *ngIf="isDefined(restaurant.cusine)">{{restaurant.cusine.value}}</p>
+      <p class="card-text" *ngIf="isDefined(restaurant.openingHours)">
+        Open at {{restaurant.openingHours.value}}
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(restaurant.capacity)">
+        Capacity: {{restaurant.capacity.value}}
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(restaurant.internetAccess)">Has internet access</p>
+
+      <p class="card-text" *ngIf="isDefined(restaurant.smoking)">
+        Has smoking area
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(restaurant.street) &&
+                                  isDefined(restaurant.houseNumber)">
+        {{restaurant.street.value}} {{restaurant.houseNumber.value}}
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(restaurant.city) &&
+                                  isDefined(restaurant.country)">
+        {{restaurant.city.value}} {{restaurant.country.value}}
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(restaurant.phone)">
+        {{restaurant.phone.value}}
+      </p>
+
+      <a href="{{restaurant.homepage.value}}" *ngIf="isDefined(restaurant.homepage)" class="btn btn-primary">
+        Website
+      </a>
+    </div>
+  </div>
+</div>
+</div>

@@ -42,14 +42,14 @@ export class MapComponent implements OnInit {
 
   private initializeMapOptions() {
     this.options = {
-      zoom: 12,
+      zoom: 15,
       layers: [
         tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution: 'OSM'})
       ]
     }
   }
 
-  private initializeDefaultMapPoint () {
+  private initializeDefaultMapPoint() {
     this.mapPoint = {
       name: 'Hello',
       latitude: DEFAULT_LATITUDE,

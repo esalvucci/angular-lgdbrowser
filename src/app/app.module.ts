@@ -13,7 +13,7 @@ import {ResultsComponent} from './results/results.component';
 import {ResultsListComponent} from './results-list/results-list.component';
 import { FiltersComponent } from './filters/filters.component';
 import { HistoricThingResultComponent } from './historic-thing-result/historic-thing-result.component';
-import { MapPointComponent } from './map-point/map-point.component';
+import { RestaurantResultComponent } from './restaurant-result/restaurant-result.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { MapPointComponent } from './map-point/map-point.component';
     ResultsComponent,
     ResultsListComponent,
     FiltersComponent,
-    HistoricThingResultComponent
+    HistoricThingResultComponent,
+    RestaurantResultComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import {Subject} from 'rxjs';
 import {LatLng, Point} from 'leaflet';
 import {MapPoint} from '../shared/models/map-point.model';
 import {NominatimResponse} from '../shared/models/nominatim-response.model';
+import {RestaurantQuery} from '../shared/models/RestaurantQuery';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,14 @@ export class ResultService {
     return this.query.executeQuery().subscribe(data => {
       this.filterSource.next(data);
     });
+  }
+
+  executeRestaurantQuery(point: MapPoint) {
+    this.query = new RestaurantQuery(this.http, this.filterService, point);
+    return this.query.executeQuery().subscribe(data => {
+      this.filterSource.next(data);
+    });
 
   }
+
 }

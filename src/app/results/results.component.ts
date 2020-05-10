@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {MapPoint} from '../shared/models/map-point.model';
+import {FilterService} from '../services/filter.service';
 
 @Component({
   selector: 'app-results',
@@ -10,6 +11,6 @@ export class ResultsComponent {
   @Input()
   mapPoint: MapPoint;
 
-  constructor() {}
+  constructor(private filterService: FilterService) {}
 
 }
