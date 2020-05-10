@@ -24,7 +24,7 @@ export class GeocodingComponent implements AfterViewInit {
     fromEvent(this.search.nativeElement, 'keyup').
       pipe(
         map((event: any) => event.target.value),
-        debounceTime(300)).subscribe((address: string) => {
+        debounceTime(400)).subscribe((address: string) => {
           this.addressLookup(address)
           console.log(address);
     });

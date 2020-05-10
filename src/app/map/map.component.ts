@@ -34,6 +34,7 @@ export class MapComponent implements OnInit {
   getAddress(result: NominatimResponse) {
     this.updateMapPoint(result.latitude, result.longitude, result.displayName);
     this.createMarker();
+    this.results = [];
   }
 
   refreshSearchList(results: NominatimResponse[]) {
@@ -57,13 +58,13 @@ export class MapComponent implements OnInit {
     };
   }
 
-  private onMapClick (e: LeafletMouseEvent) {
+  private onMapClick(e: LeafletMouseEvent) {
     this.clearMap();
     this.updateMapPoint(e.latlng.lat, e.latlng.lng);
     this.createMarker();
   }
 
-  private updateMapPoint (latitude: number, longitude: number, name?: string) {
+  private updateMapPoint(latitude: number, longitude: number, name?: string) {
     this.mapPoint = {
       latitude: latitude,
       longitude: longitude,
@@ -71,7 +72,7 @@ export class MapComponent implements OnInit {
     };
   }
 
-  private createMarker () {
+  private createMarker() {
     this.clearMap();
     const mapIcon = this.getDefaultIcon();
     const coordinates = latLng([this.mapPoint.latitude, this.mapPoint.longitude]);
@@ -79,7 +80,7 @@ export class MapComponent implements OnInit {
     this.map.setView(coordinates, this.map.getZoom());
   }
 
-  private getDefaultIcon () {
+  private getDefaultIcon() {
     return icon({
       iconSize: [25, 41],
       iconAnchor: [13, 41],
