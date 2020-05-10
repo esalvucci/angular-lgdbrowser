@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{cinema.label.value}}</h5>
-        <p class="card-text" *ngIf="isDefined(cinema.hasWeelchair)">{{cinema.hasWeelchair.value}}</p>
+        <p class="card-text" *ngIf="isDefined(cinema.hasWeelchair)">Has wheelchair</p>
         <p class="card-text" *ngIf="isDefined(cinema.street) &&
                                     isDefined(cinema.houseNumber)">
           {{cinema.street.value}} {{cinema.houseNumber.value}}
