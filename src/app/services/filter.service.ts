@@ -9,9 +9,11 @@ export class FilterService {
   poiType;
   distance;
   language;
+  maxNumberOfResults;
   constructor() {
     this.poiType = 'POI Type';
     this.distance = 0.1;
     this.language = 'Language';
+    this.maxNumberOfResults = 10;
   }
 }

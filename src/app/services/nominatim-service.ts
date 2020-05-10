@@ -8,7 +8,7 @@ import {BASE_NOMINATIM_URL, DEFAULT_VIEW_BOX} from '../app.constants';
 @Injectable()
 export class NominatimService {
 
-  constructor (private http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   addressLookup(req?: any): Observable<NominatimResponse[]> {
@@ -21,7 +21,7 @@ export class NominatimService {
           item.display_name
           ))
         )
-      )
+      );
   }
 
 }

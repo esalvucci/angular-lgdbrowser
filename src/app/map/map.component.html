@@ -1,4 +1,3 @@
-
   <div id="map"
        leaflet
        (leafletMapReady)="initializeMap($event)"
@@ -19,6 +18,14 @@
 <div id="details-panel">
   <app-results-list [results]="results" (locationSelected)="getAddress($event)"></app-results-list>
 <!--  <app-results [mapPoint]="mapPoint"></app-results> -->
-  <app-map-point-form></app-map-point-form>
 </div>
 
+  <div class="row mt-4 ml-4 mr-4" >
+    <div class="col">
+      <app-filters [mapPoint]="mapPoint"></app-filters>
+    </div>
+  </div>
+
+  <div class="row mt-4 ml-4 mr-4">
+    <app-results></app-results>
+  </div>

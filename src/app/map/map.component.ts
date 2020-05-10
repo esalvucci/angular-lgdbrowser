@@ -18,29 +18,29 @@ export class MapComponent implements OnInit {
 
   results: NominatimResponse[];
 
-  constructor () {
+  constructor() {
   }
 
-  ngOnInit () {
+  ngOnInit() {
     this.initializeDefaultMapPoint();
     this.initializeMapOptions();
   }
 
-  initializeMap (map: Map) {
+  initializeMap(map: Map) {
     this.map = map;
     this.createMarker();
   }
 
-  getAddress (result: NominatimResponse) {
+  getAddress(result: NominatimResponse) {
     this.updateMapPoint(result.latitude, result.longitude, result.displayName);
     this.createMarker();
   }
 
-  refreshSearchList (results: NominatimResponse[]) {
+  refreshSearchList(results: NominatimResponse[]) {
     this.results = results;
   }
 
-  private initializeMapOptions () {
+  private initializeMapOptions() {
     this.options = {
       zoom: 12,
       layers: [

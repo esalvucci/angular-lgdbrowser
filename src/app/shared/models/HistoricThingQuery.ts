@@ -1,19 +1,82 @@
+import {AbstractQuery} from './AbstractQuery';
+
 export class HistoricThingQuery extends AbstractQuery {
 
- getQueryString() {
-   return 'Prefix lgdo: <http://linkedgeodata.org/ontology/>\n' +
+ getQueryString(distance, language, numberOfResults, point) {
+   return 'Prefix lgdr:<http://linkedgeodata.org/triplify/>\n' +
+     'Prefix lgdo:<http://linkedgeodata.org/ontology/>\n' +
      'Prefix geom: <http://geovocab.org/geometry#>\n' +
-     'Prefix ogc:<http://www.opengis.net/ont/geosparql#>\n' +
-     'Select *\n' +
-     'From <http://linkedgeodata.org> {\n' +
-     '  ?s\n' +
-     '    a lgdo:Amenity ;\n' +
-     '    rdfs:label ?l ;    \n' +
+     'Prefix ogc: <http://www.opengis.net/ont/geosparql#>\n' +
+     'Prefix owl: <http://www.w3.org/2002/07/owl#>\n' +
+     'PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n' +
+     'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n' +
+     'PREFIX dbpedia: <http://dbpedia.org/>\n' +
+     'PREFIX dbo: <http://dbpedia.org/ontology/>\n' +
+     'PREFIX dbp: <http://dbpedia.org/property/>\n' +
+     'PREFIX bif:<bif:>\n' +
+     'PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n' +
+     'PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>\n' +
+     'PREFIX lgdoob: <http://linkedgeodata.org/ontology/obelisk%3A>\n' +
+     'PREFIX addr: <http://linkedgeodata.org/ontology/addr%3A>\n' +
+     '\n' +
+     'SELECT DISTINCT * {\n' +
+     'SERVICE <http://linkedgeodata.org/sparql> {\n' +
+     '  ?x\n' +
+     '    a lgdo:HistoricThing ;\n' +
+     '    rdfs:label ?label ;    \n' +
      '    geom:geometry [\n' +
-     '      ogc:asWKT ?g\n' +
+     '      ogc:asWKT ?xg\n' +
      '    ] .\n' +
      '\n' +
-     '    Filter(bif:st_intersects (?g, bif:st_point (' + 12.24628 + ',' + 44.13600 + '), 0.1)) .\n' +
-     '}';
+     ' OPTIONAL {\n' +
+     '    ?x lgdo:start_date ?startDate.\n' +
+     ' }\n' +
+     '\n' +
+     ' OPTIONAL {\n' +
+     '    ?x lgdo:construction_date ?constructionDate.\n' +
+     ' }\n' +
+     '\n' +
+     ' OPTIONAL {\n' +
+     '    ?x lgdo:note ?note.\n' +
+     ' }\n' +
+     '\n' +
+     ' OPTIONAL {\n' +
+     '    ?x lgdo:ruins ?ruins.\n' +
+     ' }\n' +
+     '\n' +
+     ' OPTIONAL {\n' +
+     '    ?x lgdo:inscriptions ?inscriptions.\n' +
+     ' }\n' +
+     '\n' +
+     ' OPTIONAL {\n' +
+     '    ?x lgdoob:material ?material;\n' +
+     '       lgdoob:height ?height;\n' +
+     '       lgdoob:size ?size.\n' +
+     ' } \n' +
+     '\n' +
+     ' OPTIONAL {\n' +
+     '    ?x addr:street ?street;\n' +
+     '       addr:housenumber ?houseNumber.\n' +
+     '}\n' +
+     '    \n' +
+     'OPTIONAL {\n' +
+     '   ?x addr:city ?city;\n' +
+     '      addr:country ?country.\n' +
+     '}\n' +
+     '\n' +
+     ' FILTER( lang( ?label ) = "it" ).\n' +
+     ' Filter(bif:st_intersects(?xg, bif:st_point(' + point.longitude + ', ' + point.latitude + '), ' + distance + ')) .\n' +
+     '}\n' +
+     '\n' +
+     'SERVICE <http://dbpedia.org/sparql> {\n' +
+     ' ?s  foaf:depiction ?imageUrl;\n' +
+     '     dbo:abstract ?abstract;\n' +
+     '     rdfs:label ?label;\n' +
+     '     geo:lat ?latitude;\n' +
+     '     geo:long ?longitude;\n' +
+     '     dbp:date ?date.\n' +
+     '\n' +
+     ' FILTER(lang(?abstract) = "' + language + '").\n' +
+     '}\n } LIMIT ' + numberOfResults;
  }
 }

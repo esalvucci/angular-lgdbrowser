@@ -1,0 +1,41 @@
+<div class="card-group">
+ <div class="card col-2" *ngFor="let historicThing of historicThings">
+    <img class="card-img-top mt-2 rounded" *ngIf="historicThing.imageUrl.value !== undefined"
+         src="{{historicThing.imageUrl.value}}" alt="{{historicThing.label.value}} image">
+    <div class="card-body">
+      <h5 class="card-title">{{historicThing.label.value}}</h5>
+      <p class="card-text">{{historicThing.date.value}}</p>
+      <p class="card-text" *ngIf="isDefined(historicThing.startDate)">
+        Start date: {{historicThing.startDate.value}}
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(historicThing.city) && isDefined(historicThing.country)">
+        {{historicThing.city.value}}
+      </p>
+
+
+      <p class="card-text" *ngIf="isDefined(historicThing.street) &&
+                                  isDefined(historicThing.houseNumber)">
+        {{historicThing.street.value}} {{historicThing.houseNumber.value}}
+      </p>
+
+      <p class="card-text">{{historicThing.abstract.value}}</p>
+
+      <p class="card-text" *ngIf="isDefined(historicThing.constructionDate)">
+        Construction date: {{historicThing.constructionDate.value}}
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(historicThing.inscriptions)">
+        Inscriptions: {{historicThing.inscriptions.value}}
+      </p>
+
+      <p class="card-text" *ngIf="isDefined(historicThing.material) &&
+                                  isDefined(historicThing.height) &&
+                                  isDefined(historicThing.size)">
+        Material: {{historicThing.material.value}} Height: {{historicThing.height.value}} Size: {{historicThing.size}}
+      </p>
+
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>

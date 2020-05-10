@@ -12,6 +12,8 @@ import {MapComponent} from './map/map.component';
 import {ResultsComponent} from './results/results.component';
 import {ResultsListComponent} from './results-list/results-list.component';
 import { FiltersComponent } from './filters/filters.component';
+import { HistoricThingResultComponent } from './historic-thing-result/historic-thing-result.component';
+import { MapPointComponent } from './map-point/map-point.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { FiltersComponent } from './filters/filters.component';
     MapComponent,
     ResultsComponent,
     ResultsListComponent,
-    FiltersComponent
+    FiltersComponent,
+    HistoricThingResultComponent
   ],
   imports: [
     BrowserModule,
