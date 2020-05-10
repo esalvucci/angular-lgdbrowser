@@ -58,7 +58,7 @@ export class MapComponent implements OnInit {
     };
   }
 
-  private onMapClick(e: LeafletMouseEvent) {
+  onMapClick(e: LeafletMouseEvent) {
     this.clearMap();
     this.updateMapPoint(e.latlng.lat, e.latlng.lng);
     this.createMarker();

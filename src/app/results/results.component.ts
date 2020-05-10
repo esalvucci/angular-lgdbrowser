@@ -11,6 +11,6 @@ export class ResultsComponent {
   @Input()
   mapPoint: MapPoint;
 
-  constructor(private filterService: FilterService) {}
+  constructor(public filterService: FilterService) {}
 
 }
