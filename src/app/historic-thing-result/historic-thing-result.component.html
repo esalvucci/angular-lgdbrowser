@@ -1,10 +1,10 @@
 <div class="card-group">
- <div class="card col-2" *ngFor="let historicThing of historicThings">
-    <img class="card-img-top mt-2 rounded" *ngIf="historicThing.imageUrl.value !== undefined"
+ <div class="card col-4" *ngFor="let historicThing of historicThings">
+    <img class="card-img-top mt-2 rounded" *ngIf="isDefined(historicThing.imageUrl)"
          src="{{historicThing.imageUrl.value}}" alt="{{historicThing.label.value}} image">
     <div class="card-body">
       <h5 class="card-title">{{historicThing.label.value}}</h5>
-      <p class="card-text">{{historicThing.date.value}}</p>
+      <p class="card-text" *ngIf="isDefined(historicThing.date)">{{historicThing.date.value}}</p>
       <p class="card-text" *ngIf="isDefined(historicThing.startDate)">
         Start date: {{historicThing.startDate.value}}
       </p>
@@ -19,7 +19,7 @@
         {{historicThing.street.value}} {{historicThing.houseNumber.value}}
       </p>
 
-      <p class="card-text">{{historicThing.abstract.value}}</p>
+      <p class="card-text" *ngIf="isDefined(historicThing.abstract)">{{historicThing.abstract.value}}</p>
 
       <p class="card-text" *ngIf="isDefined(historicThing.constructionDate)">
         Construction date: {{historicThing.constructionDate.value}}
@@ -35,7 +35,7 @@
         Material: {{historicThing.material.value}} Height: {{historicThing.height.value}} Size: {{historicThing.size}}
       </p>
 
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+<!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </div>
   </div>
 </div>

@@ -24,11 +24,9 @@ export class HistoricThingQuery extends AbstractQuery {
      '  ?x\n' +
      '    a lgdo:HistoricThing ;\n' +
      '    rdfs:label ?label ;    \n' +
-     '    geom:geometry [\n' +
-     '      ogc:asWKT ?xg\n' +
-     '    ] .\n' +
-     '\n' +
-     ' OPTIONAL {\n' +
+     '    geo:lat ?lat;\n' +
+     '    geo:long ?long. \n'+
+          ' OPTIONAL {\n' +
      '    ?x lgdo:start_date ?startDate.\n' +
      ' }\n' +
      '\n' +
@@ -64,19 +62,20 @@ export class HistoricThingQuery extends AbstractQuery {
      '      addr:country ?country.\n' +
      '}\n' +
      '\n' +
-     ' FILTER( lang( ?label ) = "it" ).\n' +
-     ' Filter(bif:st_intersects(?xg, bif:st_point(' + point.longitude + ', ' + point.latitude + '), ' + distance + ')) .\n' +
+     'FILTER(lang(?label) = "' + language + '" || lang(?label) = "").\n' +
+     ' Filter(bif:st_intersects(bif:st_point(?long, ?lat), bif:st_point(' + point.longitude + ', ' + point.latitude + '), ' + distance + ')) .\n' +
      '}\n' +
      '\n' +
      'SERVICE <http://dbpedia.org/sparql> {\n' +
-     ' ?s  foaf:depiction ?imageUrl;\n' +
-     '     dbo:abstract ?abstract;\n' +
-     '     rdfs:label ?label;\n' +
-     '     geo:lat ?latitude;\n' +
-     '     geo:long ?longitude;\n' +
-     '     dbp:date ?date.\n' +
-     '\n' +
-     ' FILTER(lang(?abstract) = "' + language + '").\n' +
-     '}\n } LIMIT ' + numberOfResults;
+      'OPTIONAL {\n' +
+       '?s  foaf:depiction ?imageUrl;\n' +
+     'dbo:abstract ?abstract;\n' +
+     'rdfs:label ?dbplabel;\n' +
+     'geo:lat ?latitude;\n' +
+     'geo:long ?longitude.\n' +
+     'FILTER( bif:st_intersects(bif:st_point(?longitude, ?latitude), bif:st_point(?long, ?lat), 0.01 ) ) .\n' +
+     'FILTER(lang(?abstract) = "' + language + '" || lang(?abstract) = "").\n' +
+     'FILTER(lang(?dbplabel) = "' + language + '" || lang(?dbplabel) = "").\n' +
+     '}}\n } LIMIT ' + numberOfResults;
  }
 }

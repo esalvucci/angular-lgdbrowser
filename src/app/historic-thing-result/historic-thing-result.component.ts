@@ -25,11 +25,12 @@ export class HistoricThingResultComponent implements OnInit {
 
   setData(data) {
     console.log('into setData' + data);
+    this.historicThings = [];
     this.historicThings = data.results.bindings;
     console.log(data);
     const badString = 'Il template {{Coord}} ha riscontrato degli errori (istruzioni):Modulo:Wikidata:398: attempt to index field \'wikibase\' (a nil value)';
     this.historicThings.forEach(h => {
-      if (h.abstract.value.includes(badString) ) {
+      if (this.isDefined(h.abstract) && h.abstract.value.includes(badString) ) {
         h.abstract.value = h.abstract.value.replace(badString, '');
       }
     });

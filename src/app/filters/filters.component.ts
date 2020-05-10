@@ -34,6 +34,7 @@ export class FiltersComponent implements OnInit {
   }
 
   search() {
+    console.log(this.filter.poiType);
     if (this.filter.poiType === 'HistoricThing') {
       this.searchHistoricThing();
     } else if (this.filter.poiType === 'Cinema') {
