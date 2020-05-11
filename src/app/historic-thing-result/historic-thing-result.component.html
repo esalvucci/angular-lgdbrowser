@@ -1,5 +1,6 @@
 <div class="card-group">
- <div class="card col-4" *ngFor="let historicThing of historicThings">
+  <div class="col-4" *ngFor="let historicThing of historicThings">
+    <div class="card">
     <img class="card-img-top mt-2 rounded" *ngIf="isDefined(historicThing.imageUrl)"
          src="{{historicThing.imageUrl.value}}" alt="{{historicThing.label.value}} image">
     <div class="card-body">
@@ -38,4 +39,5 @@
 <!--      <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </div>
   </div>
+</div>
 </div>
