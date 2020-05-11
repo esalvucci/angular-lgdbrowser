@@ -8,6 +8,7 @@ export class RestaurantQuery extends AbstractQuery {
      'PREFIX geom: <http://geovocab.org/geometry#>\n' +
      'PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n' +
      'PREFIX addr: <http://linkedgeodata.org/ontology/addr%3A>\n' +
+     'PREFIX bif:<bif:>\n' +
      '\n' +
      'SELECT * {\n' +
      'SERVICE <http://linkedgeodata.org/sparql> {\n' +

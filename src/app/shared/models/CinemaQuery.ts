@@ -9,6 +9,7 @@ export class CinemaQuery extends AbstractQuery {
      'PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n' +
      'PREFIX addr: <http://linkedgeodata.org/ontology/addr%3A>\n' +
      'PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>\n' +
+     'PREFIX bif:<bif:>\n' +
      '\n' +
      'SELECT * {\n' +
      'SERVICE <http://linkedgeodata.org/sparql> {\n' +

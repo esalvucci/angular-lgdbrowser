@@ -8,7 +8,7 @@ export abstract class AbstractQuery {
 
   constructor(private http: HttpClient, private filterService: FilterService, private point: MapPoint) { }
 
-  private url = 'https://demo.openlinksw.com/sparql/?default-graph-uri=&query=';
+  private url = 'https://api.nextprot.org/sparql?default-graph-uri=&named-graph-uri=&';
 
   executeQuery() {
     const headers = new HttpHeaders();
@@ -20,7 +20,7 @@ export abstract class AbstractQuery {
                                       this.filterService.maxNumberOfResults,
                                       this.point);
     console.log(query);
-    const params = new HttpParams().append('query', query).append('format', 'json');
+    const params = new HttpParams().append('query', query).append('output', 'json');
 
     return this.http.get(this.url, {headers: headers, params: params});
   }
