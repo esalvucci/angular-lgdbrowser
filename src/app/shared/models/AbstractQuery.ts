@@ -1,8 +1,6 @@
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {FilterService} from '../../services/filter.service';
-import {Point} from 'leaflet';
 import {MapPoint} from './map-point.model';
-import {NominatimResponse} from './nominatim-response.model';
 
 export abstract class AbstractQuery {
 
