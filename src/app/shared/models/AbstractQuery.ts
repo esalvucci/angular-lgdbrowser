@@ -8,7 +8,7 @@ export abstract class AbstractQuery {
 
   constructor(private http: HttpClient, private filterService: FilterService, private point: MapPoint) { }
 
-  private url = 'http://demo.openlinksw.com/sparql/?default-graph-uri=&query=';
+  private url = 'https://demo.openlinksw.com/sparql/?default-graph-uri=&query=';
 
   executeQuery() {
     const headers = new HttpHeaders();

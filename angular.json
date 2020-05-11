@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-leaflet-starter": {
+    "map-browser": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-leaflet-starter",
+            "outputPath": "dist/map-browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -76,18 +76,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-leaflet-starter:build"
+            "browserTarget": "map-browser:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-leaflet-starter:build:production"
+              "browserTarget": "map-browser:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-leaflet-starter:build"
+            "browserTarget": "map-browser:build"
           }
         },
         "test": {
@@ -124,16 +124,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-leaflet-starter:serve"
+            "devServerTarget": "map-browser:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-leaflet-starter:serve:production"
+              "devServerTarget": "map-browser:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-leaflet-starter"
+  "defaultProject": "map-browser"
 }
