@@ -24,7 +24,6 @@ export class HistoricThingResultComponent implements OnInit {
   }
 
   setData(data) {
-    console.log('into setData' + data);
     this.historicThings = [];
     this.historicThings = data.results.bindings;
     console.log(data);
@@ -39,7 +38,6 @@ export class HistoricThingResultComponent implements OnInit {
       }
     });
 
-    console.log('end of setData');
   }
 
   isDefined(data): boolean {
