@@ -29,9 +29,13 @@ export class HistoricThingResultComponent implements OnInit {
     this.historicThings = data.results.bindings;
     console.log(data);
     const badString = 'Il template {{Coord}} ha riscontrato degli errori (istruzioni):Modulo:Wikidata:398: attempt to index field \'wikibase\' (a nil value)';
+    const alternativeBadString = 'Il template {{Coord}} ha riscontrato degli errori (istruzioni): Modulo:Wikidata:398: attempt to index field \'wikibase\' (a nil value)'
     this.historicThings.forEach(h => {
       if (this.isDefined(h.abstract) && h.abstract.value.includes(badString) ) {
         h.abstract.value = h.abstract.value.replace(badString, '');
+      }
+      if (this.isDefined(h.abstract) && h.abstract.value.includes(alternativeBadString) ) {
+        h.abstract.value = h.abstract.value.replace(alternativeBadString, '');
       }
     });
 

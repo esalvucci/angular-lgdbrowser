@@ -21,12 +21,19 @@ export class HistoricThingQuery extends AbstractQuery {
      '\n' +
      'SELECT DISTINCT * {\n' +
      'SERVICE <http://linkedgeodata.org/sparql> {\n' +
+     '{  ?x a lgdo:HistoricThing. }\n' +
+     '  UNION\n' +
+     '  {  ?x a lgdo:PlaceOfWorship . }\n' +
+     '  UNION\n' +
+     '  {  ?x a lgdo:Museum . }\n' +
      '  ?x\n' +
-     '    a lgdo:HistoricThing ;\n' +
      '    rdfs:label ?label ;    \n' +
      '    geo:lat ?lat;\n' +
-     '    geo:long ?long. \n'+
-          ' OPTIONAL {\n' +
+     '    geo:long ?long. \n' +
+     ' OPTIONAL {\n' +
+     '    ?x lgdo:opening_hours ?openingHours.\n' +
+     ' }\n' +
+     ' OPTIONAL {\n' +
      '    ?x lgdo:start_date ?startDate.\n' +
      ' }\n' +
      '\n' +
@@ -76,6 +83,6 @@ export class HistoricThingQuery extends AbstractQuery {
      'FILTER( bif:st_intersects(bif:st_point(?longitude, ?latitude), bif:st_point(?long, ?lat), 0.01 ) ) .\n' +
      'FILTER(lang(?abstract) = "' + language + '" || lang(?abstract) = "").\n' +
      'FILTER(lang(?dbplabel) = "' + language + '" || lang(?dbplabel) = "").\n' +
-     '}}\n } LIMIT ' + numberOfResults;
+     '}}\n }';
  }
 }

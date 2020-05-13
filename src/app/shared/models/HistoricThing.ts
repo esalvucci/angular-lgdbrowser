@@ -13,6 +13,7 @@ export class HistoricThing {
   country;
   imageUrl;
   abstract;
+  openingHours;
   latitude;
   longitude;
   date;

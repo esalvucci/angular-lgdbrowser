@@ -12,9 +12,13 @@ export class RestaurantQuery extends AbstractQuery {
      '\n' +
      'SELECT * {\n' +
      'SERVICE <http://linkedgeodata.org/sparql> {\n' +
-     '  ?s\n' +
-     '    a lgdo:Restaurant;\n' +
-     '    rdfs:label ?label;\n' +
+     '{  ?s\n' +
+     '    a lgdo:Restaurant. }\n' +
+     'UNION \n' +
+     '{   ?s a lgdo:Pub. }\n' +
+     'UNION \n' +
+     '{  ?s  a lgdo:Bar. }\n' +
+     ' ?s rdfs:label ?label;\n' +
      '    geom:geometry [ ogc:asWKT ?sg ] .\n' +
      '\n' +
      '    OPTIONAL {\n' +
@@ -29,9 +33,8 @@ export class RestaurantQuery extends AbstractQuery {
      '      ?s lgdo:internet_access ?internetaccess.\n' +
      '    }\n' +
      '\n' +
-     '    OPTIONAL {\n' +
-     '      ?s lgdo:opening_hours ?openinghours.\n' +
-     '    }\n' +
+
+     '      ?s lgdo:opening_hours ?openingHours.\n' +
      '\n' +
      '    OPTIONAL {\n' +
      '      ?s lgdo:capacity ?capacity.\n' +
